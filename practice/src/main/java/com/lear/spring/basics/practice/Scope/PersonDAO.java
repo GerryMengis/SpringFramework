@@ -20,8 +20,4 @@ public class PersonDAO {
         this.jdbcConnection = jdbcConnection;
     }
 
-
-
-
-
 }

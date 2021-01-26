@@ -1,7 +1,7 @@
 package com.lear.spring.basics.practice.Basic;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+// import javax.annotation.PostConstruct;
+// import javax.annotation.PreDestroy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ public class BinarySearchImpl {
     private Logger logger = (Logger) LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    @Qualifier("bubble")
+    // @Qualifier("bubble")
     private SortAlgorithm sortAlgorithm;
 
     // Setter/no setter injection by taking Constructor out
@@ -36,7 +36,7 @@ public class BinarySearchImpl {
         System.out.println(sortAlgorithm);
         // Implement Search array
         // return result
-        return 3;
+        return value;
     }
 
     @PostConstruct

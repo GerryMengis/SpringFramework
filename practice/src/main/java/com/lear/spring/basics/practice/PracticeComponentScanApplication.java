@@ -5,13 +5,13 @@ import com.lear.spring.basics.componentscan.*;
 
 import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
+@Configuration
 @ComponentScan("com.lear.spring.basics.componentscan")
 public class PracticeComponentScanApplication {
 
@@ -25,8 +25,9 @@ public class PracticeComponentScanApplication {
 		// QuickSortAlgorithm());
 
 		// Application Context
-		ConfigurableApplicationContext applicationContext = SpringApplication
-				.run(PracticeComponentScanApplication.class, args);
+		AnnotationConfigApplicationContext applicationContext = 
+				new AnnotationConfigApplicationContext(PracticeComponentScanApplication.class);
+
 
 		ComponetDAO componentDAO = applicationContext.getBean(ComponetDAO.class);
 
@@ -38,6 +39,6 @@ public class PracticeComponentScanApplication {
 		LOGGER.info("{}", componentDAO1);
 		LOGGER.info("{}",componentDAO1.getJdbcConnection());
 
-
+		applicationContext.close();
 	}
 }

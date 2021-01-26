@@ -2,12 +2,14 @@ package com.lear.spring.basics.practice;
 
 import com.lear.spring.basics.practice.Basic.BinarySearchImpl;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
+@Configuration
+@ComponentScan("com.lear.spring.basics.practice")
 public class PracticeBasicApplication {
 
 	// What are Beans?
@@ -20,8 +22,8 @@ public class PracticeBasicApplication {
 		// BinarySearchImpl binarySearch = new BinarySearchImpl(new QuickSortAlgorithm());
 
 		// Application Context
-		ConfigurableApplicationContext applicationContext =
-				SpringApplication.run(PracticeBasicApplication.class, args);
+		AnnotationConfigApplicationContext applicationContext = 
+				new AnnotationConfigApplicationContext(PracticeBasicApplication.class);	
 
 		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
 
@@ -32,5 +34,7 @@ public class PracticeBasicApplication {
 
 		int result = binarySearch.binarySearch(new int[] { 12, 4, 6 }, 3);
 		System.out.println(result);
+
+		applicationContext.close();
 	}
 }
